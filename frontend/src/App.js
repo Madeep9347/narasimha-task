@@ -12,19 +12,19 @@ function App() {
   }, []);
 
   const fetchUsers = async () => {
-    const response = await axios.get('http://3.147.72.214:5000/users');
+    const response = await axios.get('http://0.0.0.0:5000/users');
     setUsers(response.data);
   };
 
   const addUser = async () => {
-    const response = await axios.post('http://3.147.72.214:5000/users', { name, email });
+    const response = await axios.post('http://0.0.0.0:5000/users', { name, email });
     setUsers([...users, response.data]);
     setName('');
     setEmail('');
   };
 
   const updateUser = async () => {
-    const response = await axios.put(`http://3.147.72.214:5000/users/${editingUser.id}`, { name, email });
+    const response = await axios.put(`http://0.0.0.0:5000/users/${editingUser.id}`, { name, email });
     setUsers(users.map(user => (user.id === editingUser.id ? response.data : user)));
     setName('');
     setEmail('');
@@ -32,7 +32,7 @@ function App() {
   };
 
   const deleteUser = async (id) => {
-    await axios.delete(`http://3.147.72.214:5000/users/${id}`);
+    await axios.delete(`http://0.0.0.0:5000/users/${id}`);
     setUsers(users.filter(user => user.id !== id));
   };
 
